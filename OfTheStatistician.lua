@@ -5,20 +5,14 @@ local function otsPrint(string)
 	print("OTS - ", string);
 end
 
--- Checks if Auctionator is currently loaded (ideally won't need this).
-local function isAuctionatorLoaded()
-	if (IsAddonLoaded("Auctionator") == 1) then
-		return true;
-	end
-	return false;
-end
-
+-- Handles the initialization checks before we do anything else.
 local function startup(itemName)
 	if(type(itemName) ~= "string") then 	-- Check to make sure we got a string.
+		otsPrint("String not recieved. Did you call it with an item ID instead?")
 		return nil;
 	end
 
-	if(not isAuctionatorLoaded) then 	-- Check to ensure that Auctionator is loaded (and thus have access to its API)
+	if(not IsAddOnLoaded("Auctionator")) then 	-- Check to ensure that Auctionator is loaded (and thus have access to its API)
 		otsPrint("Auctionator isn't loaded. Please make sure that it is working.");
 		return nil;
 	end
@@ -134,34 +128,41 @@ local function getPriceStats(itemName, suffixTable)
 	return min, avg, max;
 end
 
--- Converts a given amount of copper to its corresponding value in gold.
-local function convertCopperToGold(amount)
-	return amount/10000;
+-- Builds a string to display the gold, silver, and copper values for a given amount with the appropriate icons.
+local function getGoldString(amount)
+	local goldIcon = "|TInterface\\MoneyFrame\\UI-GoldIcon:12:12:4:0|t"
+	local silverIcon = "|TInterface\\MoneyFrame\\UI-SilverIcon:12:12:4:0|t"
+	local copperIcon = "|TInterface\\MoneyFrame\\UI-CopperIcon:12:12:4:0|t"
+
+	copper = math.floor(amount - math.floor(amount/100) * 100);
+	silver = math.floor((amount - math.floor(amount/10000) * 10000)/100);
+	gold = math.floor(amount/10000);
+
+	return gold .. goldIcon .. "  " .. silver .. silverIcon .. "  " .. copper .. copperIcon;
 end
 
--- Truncates a given float down to one decimal point.
-local function truncateFloat(value)
-	return floor(value*10 + 0.5) / 10;
-end
-
--- Hooks into the tooltips and calls the OTS function for the item.
+-- When a tooltip for an item is generated, try to add the OTS data if possible. 
 local lineAdded = false;
 local function OnTooltipSetItem(tooltip, ...)
 	if(not lineAdded) then
 		local name, _ = tooltip:GetItem();
 		local min, avg, max = OTS(name);
 		if(min and avg and max) then
-			tooltip:AddLine("Minimum" .. "|cFFFFFFFF" .. " " .. min);
-			tooltip:AddLine("Average" .. "|cFFFFFFFF" .. " " .. avg);
-			tooltip:AddLine("Maximum" .. "|cFFFFFFFF" .. " " .. max);
+			-- Format it to look like Auctionator's tooltip output
+			tooltip:AddDoubleLine("Minimum", "|cFFFFFFFF" .. getGoldString(min));
+			tooltip:AddDoubleLine("Average", "|cFFFFFFFF" .. getGoldString(avg));
+			tooltip:AddDoubleLine("Maximum", "|cFFFFFFFF" .. getGoldString(max));
 			lineAdded = true;
 		end
 	end
 end
 
+-- Ensures that only a single line gets added to the tooltip.
 local function OnTooltipCleared(tooltip, ...)
 	lineAdded = false;
 end
+
+-- Hook into the tooltip, and call the previous functions when necessary.
 GameTooltip:HookScript("OnTooltipSetItem", OnTooltipSetItem);
 GameTooltip:HookScript("OnTooltipCleared", OnTooltipCleared);
 
@@ -184,13 +185,14 @@ function OfTheStatistician(itemName)
 	end
 
 	local suffixes = buildSuffixTable(reqLevel);	-- Build a list of possible suffixes based on the item's required level.
+
+	if(#suffixes == 0) then
+		return nil, nil, nil;
+	end
+
 	local low, avg, high = getPriceStats(name, suffixes);	-- Use the item's root name and the list of suffixes to determine pricing information.
 
 	if(low and avg and high) then
-		low = truncateFloat(convertCopperToGold(low));	-- Truncate the prices down into their value in gold (with a decimal point).
-		avg = truncateFloat(convertCopperToGold(avg));
-		high = truncateFloat(convertCopperToGold(high));
-
 		return low, avg, high;
 	end
 

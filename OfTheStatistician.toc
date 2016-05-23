@@ -1,6 +1,6 @@
 ## Interface: 60200
 ## Title: Of The Statistician
-## Notes: Helps find out pricing information of a given item's alternative random enchantments.
+## Notes: Helps you find out pricing information of a given item's alternative random enchantments.
 ## Author: Nick Schorr
 ## Version: 0.1
 ## Dependencies: Auctionator

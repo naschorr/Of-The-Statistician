@@ -13,4 +13,5 @@ and seeing that the current auction price is ~99 gold, you'll see this:
 and notice that the cheapest [Lord's Cape of XYZ] is selling for much less than 99 gold. Therefore, it's unlikely that someone interested in buying that design would purchase your auction. This means that you don't have to waste gold or time listing the auction.
 
 Note: Requires [Auctionator](http://mods.curse.com/addons/wow/auctionator)
+
 Check out the [Curse](http://mods.curse.com/addons/wow/of-the-statistician) page.

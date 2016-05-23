@@ -4,10 +4,10 @@ It's a WoW addon that helps you find out pricing information of a given item's a
 
 Basically, instead of just looking at this:
 
-![Lord's Cape of Dodge without using OTS](https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/withoutOTS.png)
+![without OTS](https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/withoutOTS.png)
 
 and seeing that the current auction price is ~99 gold, you'll see this:
 
-![Lord's Cape of Dodge with OTS](https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/withOTS.png)
+![with OTS](https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/withOTS.png)
 
-and notice that the cheapest [Lord's Cape of XYZ] is selling for much less than 99 gold. Therefore, it's unlikely that someone interested in buying that design would purchase your auction.
+and notice that the cheapest [Lord's Cape of XYZ] is selling for much less than 99 gold. Therefore, it's unlikely that someone interested in buying that design would purchase your auction. This means that you don't have to waste gold or time listing the auction.

@@ -9,6 +9,7 @@ Basically, instead of just looking at this:
 and seeing that the current auction price is ~99 gold, you'll see this:
 
 ![with OTS](https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/withOTS.png)
+<img src="https://raw.githubusercontent.com/naschorr/Of-The-Statistician/master/images/highlightOTS.png" alt="with OTS highlighted" width="406" height="225">
 
 and notice that the cheapest [Lord's Cape of XYZ] is selling for much less than 99 gold. Therefore, it's unlikely that someone interested in buying that design would purchase your auction. This means that you don't have to waste gold or time listing the auction.
 

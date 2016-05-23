@@ -14,4 +14,4 @@ and notice that the cheapest [Lord's Cape of XYZ] is selling for much less than 
 
 Note: Requires [Auctionator](http://mods.curse.com/addons/wow/auctionator)
 
-Check out the [Curse](http://mods.curse.com/addons/wow/of-the-statistician) page.
+Check out the [Curse](http://mods.curse.com/addons/wow/of-the-statistician) page for the latest stable release.

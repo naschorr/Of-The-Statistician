@@ -2,17 +2,22 @@ local _;
 
 -- Prints a string with a formatted 'OTS - ' in front of it.
 local function otsPrint(string)
-	print("OTS - ", string);
+	print("|cFFFFDD00 OTS - |cFFFFFFFF" .. string);
+end
+
+-- Displays information when the addon first loads.
+local function greeting()
+	print("|cFFFFDD00 Of The Statistician |cFFFFFFFF Loaded. Check 'github.com/naschorr/Of-The-Statistician' for the latest updates.");
 end
 
 -- Handles the initialization checks before we do anything else.
 local function startup(itemName)
 	if(type(itemName) ~= "string") then 	-- Check to make sure we got a string.
-		otsPrint("String not recieved. Did you call it with an item ID instead?")
+		otsPrint("String not recieved. Did you accidentally call it with an item ID?")
 		return nil;
 	end
 
-	if(not IsAddOnLoaded("Auctionator")) then 	-- Check to ensure that Auctionator is loaded (and thus have access to its API)
+	if(not IsAddOnLoaded("Auctionator")) then 	-- Check to ensure that Auctionator is loaded (ideally this won't ever be necessary.)
 		otsPrint("Auctionator isn't loaded. Please make sure that it is working.");
 		return nil;
 	end
@@ -35,6 +40,7 @@ end
 
 -- Formats a supplied suffix by appending and prepending optional arguments.
 -- Potential arguments include (suffixTable, prependString, appendString)
+-- This needs improvement, function calls take waaay too much typing.
 local function formatSuffixTable(args)
 	local suffix = {};
 	local prepend, append = "", "";
@@ -198,3 +204,5 @@ function OfTheStatistician(itemName)
 
 	return nil, nil, nil;
 end
+
+greeting();

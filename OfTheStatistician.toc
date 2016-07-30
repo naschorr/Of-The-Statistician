@@ -1,8 +1,8 @@
-## Interface: 60200
+## Interface: 70000
 ## Title: Of The Statistician
 ## Notes: Helps you find out pricing information of a given item's alternative random enchantments.
 ## Author: Nick Schorr
-## Version: 0.1
+## Version: 0.1.1
 ## Dependencies: Auctionator
 
 OfTheStatistician.lua

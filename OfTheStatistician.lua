@@ -12,8 +12,12 @@ end
 
 -- Handles the initialization checks before we do anything else.
 local function startup(itemName)
+	if(itemName == nil) then 	-- Sometimes, when dropping items into the AH sell panel, the tooltip will return nil.
+		return nil;
+	end
+
 	if(type(itemName) ~= "string") then 	-- Check to make sure we got a string.
-		otsPrint("String not recieved. Did you accidentally call it with an item ID?")
+		otsPrint("String not recieved. Did you accidentally call it with an item ID?");
 		return nil;
 	end
 

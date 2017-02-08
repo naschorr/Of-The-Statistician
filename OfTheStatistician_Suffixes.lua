@@ -1,7 +1,7 @@
 -- Data pulled from wow.gamepedia.com/Item_suffix
 
 -- Level 1 and up
-OTS_OneAttr_Suffixes = {"Spirit", "Intellect", "Strength", "Stamina", "Agility", "Defense", "Nimbleness", "Power", "Speed"};
+OTS_OneAttr_Suffixes = {"Spirit", "Intellect", "Strength", "Stamina", "Agility", "Defense", "Nimbleness", "Power", "Speed", "Marksmanship", "Healing"};
 OTS_Resistance_Suffixes = {"Fire", "Nature", "Arcane", "Frost", "Shadow"};	-- Used for Resistance AND Protection suffixes.
 OTS_TwoAttr_Suffixes_nonThe = {"Blocking", "Eluding"};
 OTS_TwoAttr_Suffixes = {"Tiger", "Bear", "Gorilla", "Boar", "Monkey", "Falcon", "Wolf", "Eagle", "Whale", "Owl", "Invoker"};
